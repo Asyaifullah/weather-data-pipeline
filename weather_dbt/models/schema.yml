@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_weather
+    description: "Data cuaca per jam per kota, sudah dibersihkan dari raw_weather."
+    columns:
+      - name: city
+        description: "Nama kota."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["Jakarta", "Surabaya", "Bandung", "Medan", "Makassar"]
+      - name: observed_at
+        description: "Waktu observasi, zona Asia/Jakarta."
+        data_tests:
+          - not_null
+      - name: temperature_c
+        description: "Suhu udara dalam derajat Celsius."
+        data_tests:
+          - not_null
+
+  - name: mart_daily_city_weather
+    description: "Ringkasan cuaca harian, satu baris per kota per hari."
+    columns:
+      - name: city
+        data_tests:
+          - not_null
+      - name: observation_date
+        data_tests:
+          - not_null
