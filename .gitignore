@@ -226,3 +226,4 @@ __marimo__/
 target/
 logs/
 dbt_packages/
+weather_dbt/.user.yml
